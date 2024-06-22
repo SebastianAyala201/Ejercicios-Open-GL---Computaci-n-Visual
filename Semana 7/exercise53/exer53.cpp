@@ -1,4 +1,4 @@
-//Cardioide hacia la derecha
+//Cardioide con nudo hacia abajo
 
 #include <GL/glut.h>
 #include <cmath>
@@ -20,12 +20,12 @@ void pantalla() {
     glVertex2f(0,-250);
     glEnd();
 
-    glColor3f(0.0, 1.0, 1.0); // Color de la línea turquesa
+    glColor3f(1.0, 0.0, 1.0); // Color de la línea turquesa
     glLineWidth(3);
     glBegin(GL_LINE_LOOP); // Usamos GL_LINE_STRIP para conectar todos los puntos
     for (float t = 0; t <= 2* M_PI; t += 0.01) {
-        float x = (1 - cos(t)) * cos(t) * 100;
-        float y = (1 - cos(3 * t)) * sin(3 * t) * 100;
+        float x = (1+2*sin(t)) * cos(t) * 40;
+        float y = (0-(1+2*sin(t))) * sin( t) *40;
         glVertex2f(x, y);
     }
     glEnd();
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     glutInitWindowSize(680, 480);
     glutInitWindowPosition(10, 10);
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-    glutCreateWindow("Cardioide hacia la derecha"); // Crea una ventana con el título especificado
+    glutCreateWindow("Cardioide con nudo hacia abajo"); // Crea una ventana con el título especificado
     inicio();
     glutDisplayFunc(pantalla);
     glutMainLoop();
